@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  noUserFound: false,
   actions: {
     login: function() {
       this.store.query('user', {
@@ -12,7 +13,9 @@ export default Ember.Route.extend({
           this.transitionTo('notebooks', user.get('id'));
         }
         else {
-          console.log('unexpected query result');
+          this.controller.set('noUserFound', true);
+          this.controller.set('nonUser', this.controller.get('name'));
+          this.controller.set('name', null);
         }
       });
     }
