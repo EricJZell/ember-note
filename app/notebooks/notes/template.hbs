@@ -10,9 +10,9 @@
       <ul>
         {{#each model as |note|}}
           <li>
-            <!-- {{#link-to 'notebooks.notes.note' note.id }} -->
+            {{#link-to 'notebooks.notes.note' note.id }}
               {{note.title}}
-            <!-- {{/link-to}} -->
+            {{/link-to}}
             <button {{action 'deleteNote' note}}>delete</button>
           </li>
         {{else}}

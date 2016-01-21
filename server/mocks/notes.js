@@ -54,18 +54,11 @@ module.exports = function(app) {
   });
 
   notesRouter.delete('/:id', function(req, res) {
-    res.status(204).end();
+    var id = parseInt(req.params.id);
+    noteDB.remove({id: id}, function(err,numRemoved) {
+      res.status(204).end();
+    })
   });
 
-  // The POST and PUT call will not contain a request body
-  // because the body-parser is not included by default.
-  // To use req.body, run:
-
-  //    npm install --save-dev body-parser
-
-  // After installing, you need to `use` the body-parser for
-  // this mock uncommenting the following line:
-  //
-  //app.use('/api/notes', require('body-parser'));
   app.use('/api/notes', notesRouter);
 };

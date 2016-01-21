@@ -20,6 +20,11 @@ export default Ember.Route.extend({
       }, function() {
         console.log('save failed');
       });
+    },
+    deleteNotebook: function(notebook){
+      console.log('deleting notebok with title ' + notebook.get('title'));
+      notebook.deleteRecord();
+      notebook.save();
     }
   }
 });
