@@ -9,7 +9,6 @@ export default Ember.Route.extend({
         if(users.get('length') ===1) {
           var user = users.objectAt(0);
           this.controllerFor('application').set('user', user);
-          console.log('we made it here yo')
           this.transitionTo('notebooks', user.get('id'));
         }
         else {
